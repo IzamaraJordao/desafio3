@@ -1,0 +1,32 @@
+{
+  "produtos": [
+    {
+      "id": 2,
+      "nome": "Samsung Galaxy S9 Plus",
+      "preco": "R$ 1.000,00",
+      "descricao": "  ",
+      "categoria": "Celular"
+    },
+    {
+      "id": 3,
+      "nome": "Notebook Dell",
+      "preco": "R$ 2.500,00",
+      "descricao": "  ",
+      "categoria": "Notebook"
+    },
+    {
+      "nome": "xiaomi",
+      "preco": 35000,
+      "descricao": "memoria de 5ram",
+      "categoria": "NoteBook",
+      "id": 8
+    },
+    {
+      "nome": "Monitor LG 24'",
+      "preco": 2500,
+      "descricao": "24 polegadas",
+      "categoria": "Monitor",
+      "id": 9
+    }
+  ]
+}
