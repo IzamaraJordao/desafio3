@@ -97,7 +97,7 @@ export type Produto = {
         })}
        
         function handleEdit(id:number) { 
-          router.push(`./editar/${id}`)
+          router.push(`./${id}`)
         }
      
       
