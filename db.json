@@ -1,32 +1,73 @@
 {
   "produtos": [
     {
-      "id": 2,
-      "nome": "Samsung Galaxy S9 Plus",
-      "preco": "R$ 1.000,00",
-      "descricao": "  ",
-      "categoria": "Celular"
+      "nome": "ipod",
+      "preco": 2500,
+      "categoria": "Tablet",
+      "descricao": "sasas",
+      "caracteristica": {
+        "cor": "branco",
+        "tamanho": "10 polegadas",
+        "peso": "1kg",
+        "sistema operacional": "ios",
+        "rgb": true,
+        "bluetooth": true,
+        "wifi": true
+      },
+      "id": 2
     },
     {
       "id": 3,
       "nome": "Notebook Dell",
       "preco": "R$ 2.500,00",
       "descricao": "  ",
-      "categoria": "Notebook"
+      "categoria": "Notebook",
+      "caracteristica": {
+        "cor": "branco",
+        "tamanho": "14 polegadas",
+        "peso": "1kg",
+        "sistema operacional": "windows",
+        "rgb": true,
+        "bluetooth": true,
+        "wifi": true
+      }
     },
     {
       "nome": "xiaomi",
       "preco": 35000,
       "descricao": "memoria de 5ram",
       "categoria": "NoteBook",
-      "id": 8
+      "id": 8,
+      "caracteristica": {
+        "cor": "preto",
+        "tamanho": "7 polegadas",
+        "peso": "0.5kg",
+        "sistema operacional": "android",
+        "rgb": false,
+        "bluetooth": true,
+        "wifi": true
+      }
     },
     {
       "nome": "Monitor LG 24'",
       "preco": 2500,
       "descricao": "24 polegadas",
       "categoria": "Monitor",
-      "id": 9
+      "id": 9,
+      "caracteristica": {
+        "tamanho": "24 polegadas",
+        "peso": "1kg",
+        "cor": "branco",
+        "plug and play": true
+      }
+    },
+    {
+      "nome": "",
+      "preco": 0,
+      "descricao": "",
+      "categoria": "Celular",
+      "caracteristica": "",
+      "id": 10
     }
   ]
 }

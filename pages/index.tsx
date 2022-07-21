@@ -9,10 +9,10 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import Stack from '@mui/material/Stack';
-import Editar from './editar'
+import Editar from './[id]'
 import router, { useRouter } from 'next/router'
-import Link  from 'next/link';
-import ReactDOM from 'react-dom';
+import caracteristica from './caracteristica'
+
 
 
 export type Produto = {
@@ -20,23 +20,29 @@ export type Produto = {
   nome: string,
   preco: number,
   categoria: string,
-  descricao: string
+  descricao: string,
+  caracteristica: string,
 
 }
 
  function Home(): JSX.Element {
     const router = useRouter()
-   const [produtos, setProdutos] = useState<Produto[]>([]);
+  const [produtos, setProdutos] = useState<Produto[]>([]);
+  const [categoria, setCategoria] = useState("");
+  const [periferico, setPeriferico] = useState(false);
+
    const [formValues, setFormValues] = useState<Produto>(
     {
       id: 0,
       nome: "",
       preco: 0,
       categoria: "",
-      descricao: ""
+      descricao: "",
+      caracteristica: "",
 
     }
    );
+
   useEffect(() => {
     const response = axios.get(`http://localhost:3000/produtos`)
       .then((response) => {
@@ -60,6 +66,7 @@ export type Produto = {
         preco: Number(formValues.preco),
         descricao: String(formValues.descricao),
         categoria:String (formValues.categoria),
+        caracteristica: String(formValues.caracteristica),
       })
       Swal.fire({
         position: 'top-end',
@@ -99,8 +106,15 @@ export type Produto = {
         function handleEdit(id:number) { 
           router.push(`./${id}`)
         }
-     
+        function handleCaracteristica(id:number) { 
+          router.push(`./${id}`)
+        }
+     // função para pegar as características do produto
       
+      
+          
+    
+  
       const columns: GridColDef[] = [
         {field: 'id', headerName: 'ID', width: 80},
         {field: 'nome', headerName: 'Nome', width: 200},
@@ -123,33 +137,112 @@ export type Produto = {
       ]
     
   
-      
+
+
+      function caracterist() {
+        if (
+          formValues.categoria === "smartphone" ||
+          formValues.categoria === "tablet" ||
+          formValues.categoria === "notebook"
+        ) {
+          return (
+          
+            
+            <div>
+              <div className="card" style={{ width: "18rem;" }}>
+                <div className="card-header">
+                  Destaque
+                </div>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item"><input type="text" placeholder="Digite o tamanho"></input></li>
+    
+                  <li className="list-group-item"><input  placeholder="Digite o peso"></input></li>
+    
+                  <li className="list-group-item"> <input  placeholder="Digite a cor"></input></li>
+    
+                  <li className="list-group-item"> <input placeholder="Sistema operacional"></input></li>
+                  <li className="list-group-item"></li>
+    
+                  <li className="list-group-item"></li>
+    
+                </ul>
+              </div>
+            </div>
+          );
+        } if (formValues.categoria === "monitor" ||
+         formValues.categoria === "Mouse" || 
+         formValues.categoria === "Teclado") {
+        
+          return (
+            <div>
+              <div className="card" style={{ width: "18rem;" }}>
+                <div className="card-header">
+                  Destaque
+                </div>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item"><input type="text"  placeholder="Digite o tamanho"></input></li>
+    
+                  <li className="list-group-item"><input  placeholder="Digite o peso"></input></li>
+    
+                  <li className="list-group-item"> <input placeholder="Digite a cor"></input></li>
+    
+    
+    
+                </ul>
+              </div>
+            </div>
+          );
+        } else {
+          return (
+            null
+          );
+        }
+      }
+
+
+      console.log(formValues.categoria)
+      console.log(periferico)
+      ///////////////////////////////////////////////////////////////////
 
    return (
+
+    
+
+
      <div className="Container">
        <h1>Desafio III</h1>
        <div className="Cadastro">
         <label>Categoria</label>
-         <select value ={formValues.categoria} name="categoria" onChange={handleInputChange}>
-           <option value="Smartphone">Smartphone</option>
-           <option value="NoteBook">NoteBook</option>
-           <option value="Tablet">Tablet</option>
-           <option value="Celular">Celular</option>
-           <option value="Monitor">Monitor</option>
-           <option value="Mouse">Mouse</option>
-           <option value="Teclado">Teclado</option>
+         <select value ={formValues.categoria} name="categoria" onChange={handleInputChange}> 
+           <option value=" "></option>
+           <option value="smartphone">Smartphone</option>
+           <option value="notebook">NoteBook</option>
+           <option value="tablet">Tablet</option>
+           <option value="celular">Celular</option>
+           <option value="monitor">Monitor</option>
+           <option value="mouse">Mouse</option>
+           <option value="teclado">Teclado</option>
          </select>
          <label>Nome do Produto</label>
          <input type="text" name="nome" value={formValues.nome} onChange={handleInputChange}></input>
          <label>Preço do Produto</label>
          <input type="text" name="preco" value={formValues.preco} onChange={handleInputChange}></input>
-         <label>Descrição do Produto</label>
-         <input type="text" name="descricao" value={formValues.descricao} onChange={handleInputChange}></input>
+         <label></label>
+         <button onClick={() =>{handleCaracteristica}}> Descrição do Produto</button>
          <button onClick={handleRegister} >Cadastrar</button>
        </div>
-      
-     
-      
+       
+       <button onClick={()=> setPeriferico(true)}>Caracteristica</button>
+
+      {periferico && caracterist()}
+
+
+
+
+         
+
+
+
        <div className="Grid">
        <Box sx={{ height: 400, width: 1000 }}>
                 <DataGrid

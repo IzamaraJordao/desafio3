@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import {BrowserRouter, Route} from 'react-router-dom'
-import Editar from '../pages/editar'
+import Editar from './[id]'
 
 
  export default function MyApp({ Component, pageProps}: AppProps) {
@@ -11,7 +11,6 @@ import Editar from '../pages/editar'
     
  
     <Component  {...pageProps} />
-    
     
   
   )

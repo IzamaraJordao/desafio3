@@ -19,31 +19,20 @@ import { Button } from "@mui/material";
         preco: 0,
         categoria: "",
         descricao: "", 
+        caracteristica: "",
    });
  
-   const { id } = useParams();
-   useEffect(() => {
-     axios
-       .get(`http://localhost:3000/produtos/${id}`)
-       .then((res) => setFormValues(res.data));
-   }, []);
- 
- 
    
-   useEffect(() => {
-     const response = axios
-       .get(`http://localhost:3000/produtos/{id}`)
-       .then((response) => {
-         setProdutos(response.data);
-       });
-     console.log("deu certo");
-   }, []);
+    const {id}= router.query;
+  
+
+
    async function handleSubmit() {
      await axios.put(`http://localhost:3000/produtos/${id}`, {
        nome: String(formValues.nome),
        preco: Number(formValues.preco),
        categoria: String(formValues.categoria),
-       descricao: String (formValues.descricao)
+       descricao: String (formValues.descricao),
         });
       await Swal.fire({
        position: 'top-end',
@@ -52,11 +41,12 @@ import { Button } from "@mui/material";
        showConfirmButton: false,
        timer: 1500
      })
+      router.push("/");
      
     
      
    }
-   
+    
    
    const handleInputChange = (event: any) => {
      const { name, value } = event.target;
@@ -64,29 +54,19 @@ import { Button } from "@mui/material";
    };
    
  
-   function handleUpdate(e : any) {
-     console.log(formValues)
-     axios
-       .put(`http://localhost:3000/produtos/${formValues.id}`, {
-        nome: String(formValues.nome),
-        preco: Number(formValues.preco),
-        categoria: String(formValues.categoria),
-        descricao: String (formValues.descricao)
-       })
-       .then((response) => {
-         setProdutos(produtos.map((produto) => (produto.id === formValues.id ? formValues : produto)));
-         console.log(response);
-       });
-   }
+  
+   
+
+   /////////////////////////////////////////////////////////////////////////////
    return (
-     <>
+     <> 
        <h3>Editar</h3>
        <form>
          <label>Nome </label>
          <div className="input">
            <input
              type="text"
-             name="name"
+             name="nome"
              value={formValues.nome}
              onChange={handleInputChange}
            />
