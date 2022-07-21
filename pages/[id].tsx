@@ -4,7 +4,7 @@
  import axios from "axios";
  import { useParams } from "react-router-dom";
  import Swal from "sweetalert2";
- 
+ import Home from "./index";
 import { Button } from "@mui/material";
  import { useRouter } from "next/router";
  
@@ -19,7 +19,17 @@ import { Button } from "@mui/material";
         preco: 0,
         categoria: "",
         descricao: "", 
-        caracteristica: "",
+        caracteristica: {
+          tamanho:"",
+          cor: "",
+          peso:"",
+          sistemaOperacional:'',
+          rbg:"",
+          bluetooth:"" ,
+          plugAndPlay:" ",
+          wifi:""
+      
+        }
    });
  
    

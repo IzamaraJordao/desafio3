@@ -5,6 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import Editar from './[id]'
 
 
+
  export default function MyApp({ Component, pageProps}: AppProps) {
   const router = useRouter()
   return (
